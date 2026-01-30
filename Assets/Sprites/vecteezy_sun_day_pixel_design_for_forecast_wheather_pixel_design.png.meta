@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 9899c225d619f8147ba7644af46fac37
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4788569109696291810
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_0
+  - first:
+      213: -6653140893567595252
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_1
+  - first:
+      213: -2458112787674819577
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_2
+  - first:
+      213: -687086371962183946
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_3
+  - first:
+      213: 7540812714833046955
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_4
+  - first:
+      213: 6339268263219430585
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_5
+  - first:
+      213: -5024581971703326657
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_6
+  - first:
+      213: 1500994193806706680
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_7
+  - first:
+      213: 3505676694659231680
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_8
+  - first:
+      213: -1274822812630602054
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_9
+  - first:
+      213: -5883118026697008132
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_10
+  - first:
+      213: 9160233649631254946
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_11
+  - first:
+      213: 4657774642026589792
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_12
+  - first:
+      213: -7731321849447706074
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_13
+  - first:
+      213: -8766222874155008135
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_14
+  - first:
+      213: -3976004740425712416
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_15
+  - first:
+      213: -7105979785693918078
+    second: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 3925
+        height: 4001
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e32bddfb3a647240800000000000000
+      internalID: 4788569109696291810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_1
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 3245
+        width: 229
+        height: 756
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d474e6b9b4ba3a0800000000000000
+      internalID: -6653140893567595252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_2
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 3094
+        width: 455
+        height: 606
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7041cc8717703edd0800000000000000
+      internalID: -2458112787674819577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_3
+      rect:
+        serializedVersion: 2
+        x: 2791
+        y: 2792
+        width: 456
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fe9e25c59af676f0800000000000000
+      internalID: -687086371962183946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_4
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 2263
+        width: 607
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bad6f51163956a860800000000000000
+      internalID: 7540812714833046955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_5
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 2716
+        width: 456
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b40a1506ea99f750800000000000000
+      internalID: 6339268263219430585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_6
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 905
+        width: 2116
+        height: 2116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f389acf6159154ab0800000000000000
+      internalID: -5024581971703326657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_7
+      rect:
+        serializedVersion: 2
+        x: 3093
+        y: 2263
+        width: 607
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f7c5c3444a94d410800000000000000
+      internalID: 1500994193806706680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1886
+        width: 757
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf6782416aa6a030800000000000000
+      internalID: 3505676694659231680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_9
+      rect:
+        serializedVersion: 2
+        x: 3169
+        y: 1811
+        width: 756
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abea69df76bee4ee0800000000000000
+      internalID: -1274822812630602054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_10
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1207
+        width: 607
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfb17072357fa5ea0800000000000000
+      internalID: -5883118026697008132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_11
+      rect:
+        serializedVersion: 2
+        x: 3018
+        y: 1207
+        width: 607
+        height: 456
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a9d9d9a8ffaf1f70800000000000000
+      internalID: 9160233649631254946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_12
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 679
+        width: 456
+        height: 455
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e21d5eb5db3a040800000000000000
+      internalID: 4657774642026589792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_13
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 226
+        width: 455
+        height: 606
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 622147f7db3d4b490800000000000000
+      internalID: -7731321849447706074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_14
+      rect:
+        serializedVersion: 2
+        x: 1810
+        y: 0
+        width: 230
+        height: 757
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97f361ccdbe185680800000000000000
+      internalID: -8766222874155008135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_15
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 226
+        width: 455
+        height: 606
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ecf7ad11c462d8c0800000000000000
+      internalID: -3976004740425712416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_16
+      rect:
+        serializedVersion: 2
+        x: 2791
+        y: 679
+        width: 456
+        height: 455
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28c8b94b80d726d90800000000000000
+      internalID: -7105979785693918078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 815487a23b22f2f4c933940c90145a29
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_0: 4788569109696291810
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_1: -6653140893567595252
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_10: -5883118026697008132
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_11: 9160233649631254946
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_12: 4657774642026589792
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_13: -7731321849447706074
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_14: -8766222874155008135
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_15: -3976004740425712416
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_16: -7105979785693918078
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_2: -2458112787674819577
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_3: -687086371962183946
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_4: 7540812714833046955
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_5: 6339268263219430585
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_6: -5024581971703326657
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_7: 1500994193806706680
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_8: 3505676694659231680
+      vecteezy_sun_day_pixel_design_for_forecast_wheather_pixel_design_9: -1274822812630602054
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
