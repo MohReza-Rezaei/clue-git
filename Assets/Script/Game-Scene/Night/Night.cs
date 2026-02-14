@@ -46,7 +46,7 @@ public class Night : MonoBehaviour
     SetItems(); // set items into each house 
     NightUiSetUp(); // setup UI of the game
     ////
-     // setup all clues 
+    // setup all clues 
     
 
     }
@@ -294,20 +294,20 @@ public class Night : MonoBehaviour
     void SetItems()
     {   
 
-    string[] name = new string[5];
+    
     int counter = 0;
 
     for(int i = 0;i < 36; i++)
     {
+        
 
        if(houses[i].GetOwner() != null && houses[i].GetOwner().GetRole() != "Citizen")
        continue; // skip the house 
 
-    //    print("House :" + (i+1));
+      string[] name = new string[5];
 
-       for(int j = 0;j < name.Length; j++) // name.length = 5 
+       for(int j = 0;j < 5; j++) // name.length = 5 
         {
-        //  print("item" + (j+1) + " " + items[counter]);
          name[j] = items[counter];
          counter++;       
         }     
@@ -316,12 +316,13 @@ public class Night : MonoBehaviour
     }  
 
 
+
     }
 
     void NightUiSetUp()
     {
         // lock icon
-        for(int i =24; i < 29 ; i++)
+        for(int i = 0; i < houses.Length ; i++)
         {
             if(houses[i].GetOwner() != null && houses[i].GetOwner().GetRole() != "Citizen")
             lockIcon[i].SetActive(true);
@@ -331,22 +332,112 @@ public class Night : MonoBehaviour
 
     void ClueSetUp()
     {
-        int ran,ran2;
-        bool flag = true;
+       
+
+    }
+
+    void Clue1()
+    {
+        int range=-1;
+
+        for(int i = 0; i < houses.Length; i++)
+        {
+            if (houses[i].GetOwner() != null)
+            {
+                if(houses[i].GetOwner().GetRole() == "Killer")
+                {
+                print("Killer is in house : "+ (i+1));
+                 range = i;   
+                }
+            }
+        }
+
+
+        bool check = true;
         do
         {
-            ran = UnityEngine.Random.Range(0,36);
-            ran2 = UnityEngine.Random.Range(0,5);
-            
-            if(houses[ran].GetItem(ran2) == "gun")
-            {
-            flag = false;    
-            }
-            
-            
-        }while(flag);
+        int rand = UnityEngine.Random.Range(1,7);
 
-       print("There is a Gun in House "+ ran+1 );
+        if(rand == 1 && range > 5)
+        {
+        clues[0] = "City 1 is safe";
+        check = false;
+        }else if(rand == 2 && (range > 11 || range < 5))
+        {
+        clues[0] = "City 2 is safe";
+        check = false;        
+        }else if(rand == 3 && (range > 17 || range < 11))
+        {
+        clues[0] = "City 3 is safe";
+        check = false;        
+        }else if(rand == 4 && (range > 23 || range < 1))
+        {
+        clues[0] = "City 4 is safe";
+        check = false;        
+        }else if(rand == 5 && (range > 30 || range < 23))
+        {
+        clues[0] = "City 5 is safe";
+        check = false;        
+        }else if(rand == 6 && range < 30)
+        {
+        clues[0] = "City 6 is safe";
+        check = false;        
+        }
+
+
+        }while(check);
+        print(clues[0]);
+
+    }
+
+    void Clue2()
+    {
+        int house1 =-1, house2 =-1, house3=-1;
+        bool check;
+        for(int i = 0; i < houses.Length; i++)
+        {check = false;
+          if(houses[i].GetOwner() == null || houses[i].GetOwner().GetRole() == "Citizen")
+            {
+                for(int j = 0;j < 5; j++)
+                {
+                 if(houses[i].GetItem(j) == "gun")
+                 check = true;   
+                }
+
+                if (check&&house1 == -1)
+                {
+                 house1 = i;   
+                }else if(check && house2 == -1)
+                {
+                    house2 = i;
+                }else if(check && house3 == -1)
+                {
+                    house3 = i;
+                }
+            }    
+        }
+
+int rand;
+bool flag = true;
+        do
+        {
+          rand = UnityEngine.Random.Range(1,4);
+          if(rand == 1 && house1 != -1)
+            {
+                flag =false;
+                clues[1] = "House : " + (house1+1) + " has a gun";
+            }else if(rand == 2 && house2 != -1)
+            {
+                flag=false;
+                clues[1] = "House: " + (house2+1) + " has a gun";
+            }else if(rand == 3 && house3!= -1)
+            {
+                flag = false;
+                clues[1]= "House: " + (house3+1) + " has a gun";
+            } 
+        }while(flag);
+        
+        print(clues[1]);
 
     }
 

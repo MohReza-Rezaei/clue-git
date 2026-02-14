@@ -4,7 +4,7 @@ using UnityEngine;
 public class Achivement : MonoBehaviour
 {
    public GameObject day , night;
-   public GameObject insideHouse;
+   public GameObject[] insideHouse = new GameObject[6];
 
    public Night Night_script;
    public PlayerData1 playerData;
@@ -19,6 +19,8 @@ public class Achivement : MonoBehaviour
    public TextMeshProUGUI Night_field,coin_inventory,burger_inventory,pizza_inventory,hotdog_inventory,medicine_inventory,medkit_inventory,gun_inventory,bullet_inventory,key_inventory,torch_inventory,clue_inventory;
 
    public int CurrentHouse;
+
+   public GameObject MyGunShot_music;
 
     void OnEnable()
     {
@@ -175,7 +177,7 @@ void Earn(string item)
              print("You Killed a Citizen");
              Night_script.endgame--;  
             }
-
+          MyGunShot_music.GetComponent<AudioSource>().Play();
 
         }
         else
@@ -191,7 +193,7 @@ void Earn(string item)
             }
         }
 
-        playerData.Bullet--;
+        playerData.Bullet-=1;
         day.SetActive(true);
         night.SetActive(false);
     }
@@ -204,9 +206,27 @@ void Earn(string item)
         {
          if(Night_script.houses[index].GetOwner() == null || Night_script.houses[index].GetOwner().GetRole() == "Citizen")
             {
-                insideHouse.SetActive(true);
-                CurrentHouse = index;
-               
+                if(index < 6)
+                {
+                insideHouse[0].SetActive(true); 
+                }else if(index >= 6 && index < 12)
+                {
+                insideHouse[1].SetActive(true);
+                }else if(index >= 12 && index < 18)
+                {
+                insideHouse[2].SetActive(true);
+                }else if(index >= 18 && index < 24)
+                {
+                insideHouse[3].SetActive(true);
+                }else if(index >= 24 && index < 30)
+                {
+                insideHouse[4].SetActive(true);
+                }else if(index >= 30)
+                {
+                insideHouse[5].SetActive(true);
+                }
+                
+               CurrentHouse = index;
             }
          else
          {

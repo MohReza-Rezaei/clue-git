@@ -43,9 +43,8 @@ public class PickItem : MonoBehaviour
 
 public void Select(int i)
 {
-
+ print("Current house: " + achivement_script.CurrentHouse);
  string item = Night_script.houses[achivement_script.CurrentHouse].GetItem(i);
- print("test : " + item);
 
  GroupSelect.SetActive(false);
  

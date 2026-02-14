@@ -378,5 +378,40 @@ public void Consume_Medkit(){
             ItemsUpdate();
         }
     }
+////////////////////////////////////
+
+public void Buy_key(){
+    if(playerData.Coin >= 7){
+        playerData.Coin -= 7;
+        playerData.Key += 1;
+       ItemsUpdate();
+    }
+}
+//////////////////////////////////
+public void Buy_Medicine(){
+    if(playerData.Coin >= 4){
+        playerData.Coin -= 4;
+        playerData.Medicine += 1;
+       ItemsUpdate();
+    }
+}
+
+public void Buy_Medkit(){
+    if(playerData.Coin >= 6){
+        playerData.Coin -= 6;
+        playerData.Medkit += 1;
+       ItemsUpdate();
+    }
+}
+
+////////////////////////////////////
+
+ public void Buy_Torch(){
+    if(playerData.Coin >= 3){
+        playerData.Coin -= 3;
+        playerData.Torch += 1;
+       ItemsUpdate();
+    }
+}
 
 }
