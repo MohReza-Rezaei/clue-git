@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {   
-
+    public GameObject ConfirmBuyMusic,DeclineBuyMusic;
     public GameObject PoliceActiveDoor,PoliceOffDoor;
     public GameObject DinerActiveDoor,DinerOffDoor;
     public GameObject AmbassadorActiveDoor,AmbassadorOffDoor;
@@ -332,9 +332,14 @@ public void Consume_Medkit(){
     {
         if(playerData.Coin >= 5)
         {
+            ConfirmBuyMusic.GetComponent<AudioSource>().Play();
             playerData.Hamburger += 1;
             playerData.Coin -= 5;
             ItemsUpdate();
+        }
+        else
+        {
+            DeclineBuyMusic.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -342,9 +347,14 @@ public void Consume_Medkit(){
     {
         if(playerData.Coin >= 3)
         {
+            ConfirmBuyMusic.GetComponent<AudioSource>().Play();
             playerData.Hotdog += 1;
             playerData.Coin -= 3;
             ItemsUpdate();
+        }
+        else
+        {
+            DeclineBuyMusic.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -352,9 +362,14 @@ public void Consume_Medkit(){
     {
         if(playerData.Coin >= 1)
         {
+            ConfirmBuyMusic.GetComponent<AudioSource>().Play();
             playerData.Pizza += 1;
             playerData.Coin -= 1;
             ItemsUpdate();
+        }
+        else
+        {
+            DeclineBuyMusic.GetComponent<AudioSource>().Play();
         }
     }
 /////////////////////// gun shop //////////
@@ -363,9 +378,14 @@ public void Consume_Medkit(){
     {
         if(playerData.Coin >= 15)
         {
+            ConfirmBuyMusic.GetComponent<AudioSource>().Play();
             playerData.Coin -= 15;
             playerData.Gun += 1;
             ItemsUpdate();
+        }
+        else
+        {
+            DeclineBuyMusic.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -373,45 +393,86 @@ public void Consume_Medkit(){
     {
         if(playerData.Coin >= 2)
         {
+            ConfirmBuyMusic.GetComponent<AudioSource>().Play();
             playerData.Coin -= 2;
             playerData.Bullet += 1;
             ItemsUpdate();
+        }
+        else
+        {
+            DeclineBuyMusic.GetComponent<AudioSource>().Play();
         }
     }
 ////////////////////////////////////
 
 public void Buy_key(){
     if(playerData.Coin >= 7){
+        ConfirmBuyMusic.GetComponent<AudioSource>().Play();
         playerData.Coin -= 7;
         playerData.Key += 1;
        ItemsUpdate();
+    }
+    else
+    {
+        DeclineBuyMusic.GetComponent<AudioSource>().Play();
     }
 }
 //////////////////////////////////
 public void Buy_Medicine(){
     if(playerData.Coin >= 4){
+        ConfirmBuyMusic.GetComponent<AudioSource>().Play();
         playerData.Coin -= 4;
         playerData.Medicine += 1;
        ItemsUpdate();
+    }
+    else
+    {
+        DeclineBuyMusic.GetComponent<AudioSource>().Play();
     }
 }
 
 public void Buy_Medkit(){
     if(playerData.Coin >= 6){
+        ConfirmBuyMusic.GetComponent<AudioSource>().Play();
         playerData.Coin -= 6;
         playerData.Medkit += 1;
        ItemsUpdate();
     }
+    else
+    {
+        DeclineBuyMusic.GetComponent<AudioSource>().Play();
+    }
+    
 }
 
 ////////////////////////////////////
 
  public void Buy_Torch(){
     if(playerData.Coin >= 3){
+        ConfirmBuyMusic.GetComponent<AudioSource>().Play();
         playerData.Coin -= 3;
         playerData.Torch += 1;
        ItemsUpdate();
     }
+    else
+    {
+        DeclineBuyMusic.GetComponent<AudioSource>().Play();
+    }
 }
+ /////////////////
+ public void Buy_Clue()
+ {
+     if (playerData.Coin >= 6)
+     {
+         ConfirmBuyMusic.GetComponent<AudioSource>().Play();
+         playerData.Coin -= 6;
+         playerData.Clue += 1;
+         ItemsUpdate();
+     }
+     else
+     {
+         DeclineBuyMusic.GetComponent<AudioSource>().Play();
+     }
+ }
 
 }

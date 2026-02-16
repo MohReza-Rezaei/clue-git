@@ -147,7 +147,7 @@ IEnumerator Found(string item)
      else if(item == "empty")
      nothingPrize.SetActive(true);
 
-     yield return new WaitForSeconds(4);
+     yield return new WaitForSeconds(1);
 
      coinPrize.SetActive(false);
      gunPrize.SetActive(false);
