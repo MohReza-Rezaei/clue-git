@@ -25,6 +25,8 @@ public class Night : MonoBehaviour
     public Person KeySmith = new("KeySmith");
     public Person NoOne = new ("NoOne");
     public Person Killer = new("Killer");
+    public int KillerHome;
+    public int KillerTargetHome;
     readonly Person[] citizens = new Person[10];
     public House[] houses = new House[36];
     public GameObject[] lockIcon = new GameObject[36];
@@ -45,9 +47,10 @@ public class Night : MonoBehaviour
     GameSetUp(); // choose houses' roles (random)
     SetItems(); // set items into each house 
     NightUiSetUp(); // setup UI of the game
+    MakeTag(); 
     ////
     // setup all clues 
-    
+    ClueSetUp();
 
     }
 
@@ -149,6 +152,7 @@ public class Night : MonoBehaviour
                     houses[random-1].IsLocked = true;
                     Killer.selected = true;
                     permissionRole = false;
+                    KillerHome = random-1;
                  //   print("Killer");
                     }else if (randomRole == 2 && !police.selected)
                     {
@@ -328,11 +332,11 @@ public class Night : MonoBehaviour
             lockIcon[i].SetActive(true);
         }
     }
-
+///////////////////////////////////////////////////
 
     void ClueSetUp()
     {
-       
+       Clue1();
 
     }
 
@@ -392,52 +396,100 @@ public class Night : MonoBehaviour
 
     void Clue2()
     {
-        int house1 =-1, house2 =-1, house3=-1;
-        bool check;
-        for(int i = 0; i < houses.Length; i++)
-        {check = false;
-          if(houses[i].GetOwner() == null || houses[i].GetOwner().GetRole() == "Citizen")
-            {
-                for(int j = 0;j < 5; j++)
-                {
-                 if(houses[i].GetItem(j) == "gun")
-                 check = true;   
-                }
+        print(houses[KillerHome].GetTag(0));
+    }
 
-                if (check&&house1 == -1)
-                {
-                 house1 = i;   
-                }else if(check && house2 == -1)
-                {
-                    house2 = i;
-                }else if(check && house3 == -1)
-                {
-                    house3 = i;
-                }
-            }    
-        }
-
-int rand;
-bool flag = true;
-        do
+    public int Clue3()
+    {
+        int[] suspect = new int[3];
+        int susCount = 0;
+        for(int i = 0;i < 35; i++)
         {
-          rand = UnityEngine.Random.Range(1,4);
-          if(rand == 1 && house1 != -1)
+            if(houses[i].GetOwner() == null || houses[i].GetOwner().GetRole() == "Citizen")
             {
-                flag =false;
-                clues[1] = "House : " + (house1+1) + " has a gun";
-            }else if(rand == 2 && house2 != -1)
+               for(int j = 0;j < 5; j++)
+               {
+                if(houses[i].GetItem(j) == "gun")
+                    {
+                     suspect[susCount] = i+1;  
+                     susCount++; 
+                    }
+               } 
+            }
+         }
+            
+        int random = UnityEngine.Random.Range(0,3);
+
+        return suspect[random];
+       
+    }
+
+    public void Clue4()
+    {
+     print(houses[KillerHome].GetTag(1));   
+    }
+
+    public void Clue5()
+    {
+     int target =(KillerTargetHome / 6) +1;
+     print(" city " + target + " is dangerous tonight");    
+    }
+
+    void Clue6()
+    {
+     print(houses[KillerHome].GetTag(2));   
+    }
+
+    void Clue7()
+    {
+        if((KillerHome+1) % 2 == 0)
+        {
+        print("Even Houses are Suspicious");
+        }
+        else
+        {
+        print("Odd Houses are suspicious");
+        }
+    }
+
+    void MakeTag()
+    {
+   string[][] combinations =
+{
+    new string[] { "luxury", "old", "damaged" },
+    new string[] { "luxury", "old", "small" },
+    new string[] { "luxury", "old", "furnished" },
+    new string[] { "luxury", "damaged", "small" },
+    new string[] { "luxury", "damaged", "furnished" },
+    new string[] { "luxury", "small", "furnished" },
+    new string[] { "old", "damaged", "small" },
+    new string[] { "old", "damaged", "furnished" },
+    new string[] { "old", "small", "furnished" },
+    new string[] { "damaged", "small", "furnished" }
+};
+
+
+for (int i = combinations.Length - 1; i > 0; i--)
+{
+    int randomIndex = UnityEngine.Random.Range(0, i + 1);
+
+    string[] temp = combinations[i];
+    combinations[i] = combinations[randomIndex];
+    combinations[randomIndex] = temp;
+}
+
+
+        int counter = 0;
+
+        for(int j = 0; j < houses.Length; j++)
+        {
+            if (houses[j].IsLocked)
             {
-                flag=false;
-                clues[1] = "House: " + (house2+1) + " has a gun";
-            }else if(rand == 3 && house3!= -1)
-            {
-                flag = false;
-                clues[1]= "House: " + (house3+1) + " has a gun";
-            } 
-        }while(flag);
-        
-        print(clues[1]);
+                houses[j].hasTag = true;
+                houses[j].SetTag(combinations[counter]);
+                counter++;
+            }
+        }
 
     }
 
@@ -473,6 +525,7 @@ void KillAndHeal()
 
       if(houses[random].GetOwner() != null && houses[random].GetOwner().IsAlive() && houses[random].GetOwner().GetRole() != "NoOne" && houses[random].GetOwner().GetRole()!="Killer")
       {
+      KillerTargetHome = random;
       print(houses[random].GetOwner().GetRole()+ " was Killed . House " + (random+1));
       policeFile.message[playerData.Nights-1] = houses[random].GetOwner().GetRole() + " was killed. House: " + (random+1).ToString();
       permission = false;
@@ -583,11 +636,14 @@ public class House
     private Person owner;
     private string[] items = new string[5];
     public bool IsLocked;
+    public bool hasTag;
+    private string[] Tags = new string[3];
 
     public House()
     {
         owner = null;
         IsLocked = false;
+        hasTag = false;
         
         for(int i = 0;i < items.Length; i++)
         {
@@ -621,12 +677,26 @@ public class House
         return items[index];
     }
 
-    
-
     public int Items_size()
     {
         return items.Length;
     }
 
     //////////////////////////////////////
+    
+    public void SetTag(string[] tags)
+    {
+
+      for(int i =0;i < 3; i++)
+        {
+            Tags[i] = tags[i];
+        }
+
+    }
+
+    public string GetTag(int i)
+    {
+    return Tags[i];    
+    }
+
 }

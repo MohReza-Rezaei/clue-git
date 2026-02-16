@@ -5,7 +5,6 @@ public class PickItem : MonoBehaviour
 {
     int Choose;
     public GameObject night , day , house , GroupSelect , killmusic , night_scene;
-    
     public PlayerData1 playerData;
     public Night Night_script;
     public Achivement achivement_script;
