@@ -1,11 +1,16 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
+using System.Collections;
 
 public class Achivement : MonoBehaviour
 {
+    public Inventory Inventory_script;
    public GameObject day , night;
    public GameObject[] insideHouse = new GameObject[6];
-
+   public GameObject[] CheckHouse = new GameObject[36];
    public Night Night_script;
    public PlayerData1 playerData;
    public GameObject NotAllowed;
@@ -17,11 +22,19 @@ public class Achivement : MonoBehaviour
    public GameObject keyNotAllowed;
    public GameObject unlockNotAllowed;
    public TextMeshProUGUI Night_field,coin_inventory,burger_inventory,pizza_inventory,hotdog_inventory,medicine_inventory,medkit_inventory,gun_inventory,bullet_inventory,key_inventory,torch_inventory,clue_inventory;
-
+    public TextMeshProUGUI[] founditemstext=new TextMeshProUGUI[5];
    public int CurrentHouse;
-
+   public GameObject KillerinHouse;
+   public GameObject itemsfoundbyshot; 
    public GameObject MyGunShot_music;
-
+   public GameObject OpenLock_music;
+   public Sprite unlocked;
+   public GameObject TorchSeek;
+   public TextMeshProUGUI torchseektext;
+   public GameObject HouseTags,Luxury, Old, Damaged, Small,Furnished;
+   public PickItem PickItem_script;
+   public GameObject PoliceInCity;
+   public int MyShootIndex;
     void OnEnable()
     {
         playerData.Nights+=1;
@@ -84,19 +97,32 @@ public class Achivement : MonoBehaviour
      keyMode = true;
     }
     ///////////////////////////////////////////////////////////////
-    /// 
- void Select(int i)
+    ///
+   
+ string Select(int i)
 {
 
  string item = Night_script.houses[CurrentHouse].GetItem(i);
- print("test : " + item);
+ //print("test : " + item);
  
  Earn(item);
+ return item;
 
- 
 
 }
+    IEnumerator TorchShowInfo()
+    {
+        // Show torch result
+        TorchSeek.SetActive(true);
 
+        // Wait 3 seconds
+        yield return new WaitForSeconds(3f);
+
+        // Hide torch result
+        TorchSeek.SetActive(false);
+        StartCoroutine(PickItem_script.TorchPause());
+    }
+    
 void Earn(string item)
 {
   if(item == "coin")
@@ -163,39 +189,51 @@ void Earn(string item)
     /// 
     void Shoot(int index)
     {
+        if (index == Night_script.KillerTargetHome)
+        {
+            //win
+            Night_script.Killer.SwapAliveStatus();
+        }
         print("Shoot index " + index);
+        MyShootIndex=index;
         if(Night_script.houses[index].GetOwner() == null || Night_script.houses[index].GetOwner().GetRole() == "Citizen")
         {
             for(int i = 0; i < 5; i++)
             {
-              Select(i);  
+                founditemstext[i].text = Select(i);
             }
-            
+            itemsfoundbyshot.SetActive(true);
             if(Night_script.houses[index].GetOwner()!=null)
-            {
+            { 
+             MyGunShot_music.GetComponent<AudioSource>().Play();
              Night_script.houses[index].GetOwner().SwapAliveStatus();
              print("You Killed a Citizen");
-             Night_script.endgame--;  
+             Night_script.endgame--;
+             playerData.PersonAlive--;
             }
-          MyGunShot_music.GetComponent<AudioSource>().Play();
+          
 
         }
         else
         {
+            MyGunShot_music.GetComponent<AudioSource>().Play();
           if(Night_script.houses[index].GetOwner().GetRole() == "Killer")
             {
                 //win
+                Night_script.Killer.SwapAliveStatus();
             }
             else
             {
                 Night_script.houses[index].GetOwner().SwapAliveStatus();
                 print("You killed " +Night_script.houses[index].GetOwner().GetRole());
+                playerData.PersonAlive--;
+                Night_script.endgame--;
             }
+            day.SetActive(true);
+            night.SetActive(false);
         }
 
         playerData.Bullet-=1;
-        day.SetActive(true);
-        night.SetActive(false);
     }
  ////////////////////////////////////////////////////////////////
 
@@ -204,8 +242,13 @@ void Earn(string item)
     {
         if (handMode)
         {
-         if(Night_script.houses[index].GetOwner() == null || Night_script.houses[index].GetOwner().GetRole() == "Citizen")
+         if((Night_script.houses[index].GetOwner() == null || Night_script.houses[index].GetOwner().GetRole() == "Citizen") && !Night_script.houses[index].visited)
             {
+                if (index == Night_script.KillerTargetHome)
+                {
+                    Inventory_script.health_slider.value -= 0.5f;
+                    KillerinHouse.SetActive(true);
+                }
                 if(index < 6)
                 {
                 insideHouse[0].SetActive(true); 
@@ -225,21 +268,61 @@ void Earn(string item)
                 {
                 insideHouse[5].SetActive(true);
                 }
-                
+                if (((index / 6) == (Night_script.PoliceHomeIndex / 6)) && Night_script.police.IsAlive())
+                {
+                    Inventory_script.health_slider.value -= 0.5f;
+                    PoliceInCity.SetActive(true);
+                }
+                CheckHouse[index].SetActive(true);
+                Night_script.houses[index].visited=true;
                CurrentHouse = index;
             }
          else
          {
-            HandNotAllowed.SetActive(true);
-            NotAllowed.SetActive(true);
+             string[] Alltags = new string[3];
+             if (Night_script.houses[index].IsLocked == true)
+             {
+                 HandNotAllowed.SetActive(true);
+                 NotAllowed.SetActive(true);
+             }
+             else
+             {
+                 HouseTags.SetActive(true);
+                 Alltags = Night_script.houses[index].GetAlltags();
+                 for (int i = 0; i < 3; i++)
+                 {
+                     if (Alltags[i] == "luxury")
+                     {
+                         Luxury.SetActive(true);
+                     }
+                     else if (Alltags[i] == "old")
+                     {
+                         Old.SetActive(true);
+                     }
+                     else if (Alltags[i] == "damaged")
+                     {
+                         Damaged.SetActive(true);
+                     }
+                     else if (Alltags[i] == "small")
+                     {
+                         Small.SetActive(true);
+                     }
+                     else if (Alltags[i] == "furnished")
+                     {
+                         Furnished.SetActive(true);
+                     }
+                 }
+             }
          }
             
         }else if (gunMode)
         {
-            if(playerData.Gun > 0&&playerData.Bullet > 0&& !Night_script.houses[index].IsLocked)
+            if(playerData.Gun > 0&&playerData.Bullet > 0&& !Night_script.houses[index].IsLocked && !Night_script.houses[index].visited)
             {   
                 CurrentHouse = index;
                 Shoot(index);
+                CheckHouse[index].SetActive(true);
+                Night_script.houses[index].visited = true;
             }else if(playerData.Gun <= 0)
             {
             NotAllowed.SetActive(true);
@@ -253,12 +336,17 @@ void Earn(string item)
             NotAllowed.SetActive(true);
             LockedNotAllowed.SetActive(true); 
             }
+            else if (Night_script.houses[index].visited)
+            {
+                //already  visited UI!
+            }
         }else if (torchMode)
         {
             if(playerData.Torch > 0&& !Night_script.houses[index].IsLocked && Night_script.houses[index].GetOwner()!=null && Night_script.houses[index].GetOwner().GetRole() != "Citizen")
             {
-                print("Ohh!! you see "+ Night_script.houses[index].GetOwner().GetRole());
+                torchseektext.text = "Oh... you see the " + Night_script.houses[index].GetOwner().GetRole() + "! ";
                 playerData.Torch--;
+                StartCoroutine(TorchShowInfo());
             }else if(playerData.Torch <= 0)
             {
             NotAllowed.SetActive(true);
@@ -277,9 +365,12 @@ void Earn(string item)
         {
             if(playerData.Key > 0&& Night_script.houses[index].IsLocked)
             {
+                OpenLock_music.GetComponent<AudioSource>().Play();
                 Night_script.houses[index].IsLocked = false;
                 playerData.Key--;
-            }else if(playerData.Torch <= 0)
+                Night_script.lockIcon[index].GetComponent<Image>().sprite = unlocked;
+                Night_script.lockIcon[index].GetComponent<Image>().SetNativeSize();
+            }else if(playerData.Key <= 0)
             {
             NotAllowed.SetActive(true);
             keyNotAllowed.SetActive(true); 

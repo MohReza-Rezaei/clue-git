@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {   
+    //////////////
+    private int AzayeOmoomi=0;
+    //////////////
     public GameObject ConfirmBuyMusic,DeclineBuyMusic;
     public GameObject PoliceActiveDoor,PoliceOffDoor;
     public GameObject DinerActiveDoor,DinerOffDoor;
@@ -19,9 +22,10 @@ public class Inventory : MonoBehaviour
     public Night night_script;
     public PlayerData1 playerData;
     public Slider food_slider , health_slider;
+    public VictoryDefeat victoryscript;
     ////////////////////////////
     public TextMeshProUGUI burger_text , hotdog_text , pizza_text , medicine_text , medkit_text;
-    public TextMeshProUGUI Day_field , coin_field ;
+    public TextMeshProUGUI Day_field , coin_field,personAlive_field ;
     public TextMeshProUGUI coin_inventory , burger_inventory , pizza_inventory , hotdog_inventory , medicine_inventory , medkit_inventory , gun_inventory , bullet_inventory , key_inventory , torch_inventory , clue_inventory ;
     ///////////////////////////////////
 
@@ -30,6 +34,8 @@ public class Inventory : MonoBehaviour
     ItemsUpdate();
     Hunger_Update();
     Store_Update();
+    CheckAmbassador();
+    victoryscript.Check();
     }
 
 /// ////////////////////////////////////////////////////////////////
@@ -182,7 +188,35 @@ public class Inventory : MonoBehaviour
             ClinicOffDoor.SetActive(true);
         }
     }
+
+    /// <summary>
+    void CheckAmbassador()
+    {
+        if (AzayeOmoomi == 0 && !night_script.Ambassador.IsAlive())
+        {
+            PoliceOffDoor.SetActive(true);
+            PoliceActiveDoor.SetActive(false);
+            DinerOffDoor.SetActive(true);
+            DinerActiveDoor.SetActive(false);
+            CommissionerOffDoor.SetActive(true);
+            CommissionerActiveDoor.SetActive(false);
+            AmbassadorOffDoor.SetActive(true);
+            AmbassadorActiveDoor.SetActive(false);
+            GunSalerOffDoor.SetActive(true);
+            GunSalerActiveDorr.SetActive(false);
+            KeySmithOffDoor.SetActive(true);
+            keySmithActiveDoor.SetActive(false);
+            TorchSmithOffDoor.SetActive(true);
+            TorchSmithActiveDoor.SetActive(false);
+            ClinicOffDoor.SetActive(true);
+            ClinicActiveDoor.SetActive(false);
+            AzayeOmoomi++;
+        }
+    }
    
+   
+   
+   /// </summary>
 /////////////////////////////////////////////////////////////////////
 
     void ItemsUpdate()
@@ -190,9 +224,9 @@ public class Inventory : MonoBehaviour
         // players item
     Day_field.text = "#" + playerData.Days.ToString();
     coin_field.text =  playerData.Coin.ToString();
+    personAlive_field.text = playerData.PersonAlive.ToString();
 
         // inventory
-
     coin_inventory.text = "#" + playerData.Coin.ToString();
     burger_inventory.text = "#" + playerData.Hamburger.ToString();
     pizza_inventory.text = "#" + playerData.Pizza.ToString();
@@ -216,6 +250,11 @@ public class Inventory : MonoBehaviour
             food_slider.value -= 0.33f;
         }
 
+        if (food_slider.value < 0.13f)
+        {
+            health_slider.value -= 0.5f;
+        }
+
     }
 ///////////////////////////////////////////////////////////////////////////
 
@@ -226,41 +265,81 @@ public class Inventory : MonoBehaviour
         PoliceActiveDoor.SetActive(false);
         PoliceOffDoor.SetActive(true);    
         }
+        else
+        {
+            PoliceActiveDoor.SetActive(true);
+            PoliceOffDoor.SetActive(false);  
+        }
         if (!night_script.Chef.IsAlive())
         {
         DinerActiveDoor.SetActive(false);
         DinerOffDoor.SetActive(true);
+        }
+        else
+        {
+            DinerActiveDoor.SetActive(true);
+            DinerOffDoor.SetActive(false);
         }
         if (!night_script.Ambassador.IsAlive())
         {
         AmbassadorActiveDoor.SetActive(false);
         AmbassadorOffDoor.SetActive(true);
         }
+        else
+        {
+            AmbassadorActiveDoor.SetActive(true);
+            AmbassadorOffDoor.SetActive(false);
+        }
          if (!night_script.Commissioner.IsAlive())
         {
         CommissionerActiveDoor.SetActive(false);
         CommissionerOffDoor.SetActive(true);
-        } 
+        }
+         else
+         {
+             CommissionerActiveDoor.SetActive(true);
+             CommissionerOffDoor.SetActive(false);
+         }
          if (!night_script.GunSmith.IsAlive())
         {
         GunSalerActiveDorr.SetActive(false);
         GunSalerOffDoor.SetActive(true);
         }
+         else
+         {
+             GunSalerActiveDorr.SetActive(true);
+             GunSalerOffDoor.SetActive(false);
+         }
          if (!night_script.KeySmith.IsAlive())
         {
         keySmithActiveDoor.SetActive(false);
         KeySmithOffDoor.SetActive(true);
         }
+         else
+         {
+             keySmithActiveDoor.SetActive(true);
+             KeySmithOffDoor.SetActive(false);
+         }
          if (!night_script.TorchSmith.IsAlive())
         {
         TorchSmithActiveDoor.SetActive(false);
         TorchSmithOffDoor.SetActive(true);
         }
+         else
+         {
+             TorchSmithActiveDoor.SetActive(true);
+             TorchSmithOffDoor.SetActive(false);
+         }
          if (!night_script.Doctor.IsAlive())
         {
         ClinicActiveDoor.SetActive(false);
         ClinicOffDoor.SetActive(true);
-        }          
+        }
+         else
+         {
+             ClinicActiveDoor.SetActive(true);
+             ClinicOffDoor.SetActive(false);
+         }
     }
 
 

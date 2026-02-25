@@ -15,7 +15,7 @@ public class PlayerData1 : MonoBehaviour
     public int Clue=0;
     public int Days=0;
     public int Nights=0;
-    
+    public int PersonAlive = 18;
 
 
 }

@@ -30,12 +30,14 @@ public class Night : MonoBehaviour
     readonly Person[] citizens = new Person[10];
     public House[] houses = new House[36];
     public GameObject[] lockIcon = new GameObject[36];
-
+    public GameObject[] OffClues = new GameObject[7];
     public PoliceFile policeFile;
     public PlayerData1 playerData;
-
+    public int PoliceHomeIndex;
     List<string> items = new List<string>(); // 130
-
+    public TextMeshProUGUI Cluetext;
+    public bool SaveSuccess;
+    
   
     void Start()
     {
@@ -47,16 +49,15 @@ public class Night : MonoBehaviour
     GameSetUp(); // choose houses' roles (random)
     SetItems(); // set items into each house 
     NightUiSetUp(); // setup UI of the game
-    MakeTag(); 
-    ////
-    // setup all clues 
-    ClueSetUp();
-
+    MakeTag(); //initialize all tags randomly and distrubute
+    ClueSetUp();// setup all clues
     }
 
 
     void OnEnable()
     {
+       // Clue5();//dynamic clue
+        CheckClue();
         if(endgame > 0)
         StartCoroutine(KillHeal());
     }
@@ -71,8 +72,8 @@ public class Night : MonoBehaviour
         AddItem("torch",10);
         AddItem("food",10);
         AddItem("clue",7);
-        AddItem("empty",33);
-
+        AddItem("empty",23);
+        AddItem("medicine", 10);
         Shuffle(items);
 
     }
@@ -158,6 +159,7 @@ public class Night : MonoBehaviour
                     {
 
                     houses[random-1].SetOwner(police);
+                    PoliceHomeIndex=random-1;
                     houses[random-1].IsLocked = true;
                     police.selected = true;
                     permissionRole = false;
@@ -337,7 +339,12 @@ public class Night : MonoBehaviour
     void ClueSetUp()
     {
        Clue1();
-
+       Clue2();
+       Clue3();
+       Clue4();
+       Clue6();
+       Clue7();
+       
     }
 
     void Clue1()
@@ -390,16 +397,16 @@ public class Night : MonoBehaviour
 
 
         }while(check);
-        print(clues[0]);
+        
 
     }
 
     void Clue2()
     {
-        print(houses[KillerHome].GetTag(0));
+        clues[1]="The killer's house is "+houses[KillerHome].GetTag(0)+" (tag1). ";
     }
 
-    public int Clue3()
+    void Clue3()
     {
         int[] suspect = new int[3];
         int susCount = 0;
@@ -419,39 +426,54 @@ public class Night : MonoBehaviour
          }
             
         int random = UnityEngine.Random.Range(0,3);
-
-        return suspect[random];
-       
+        clues[2]="There is a gun in House #"+suspect[random].ToString();
     }
 
     public void Clue4()
-    {
-     print(houses[KillerHome].GetTag(1));   
+    { 
+        clues[3]="The killer's house is "+houses[KillerHome].GetTag(1)+" (tag2). ";  
     }
 
     public void Clue5()
     {
      int target =(KillerTargetHome / 6) +1;
-     print(" city " + target + " is dangerous tonight");    
+     clues[4]=" city " + target + " is dangerous tonight";    
     }
 
     void Clue6()
     {
-     print(houses[KillerHome].GetTag(2));   
+        clues[5]="The killer's house is "+houses[KillerHome].GetTag(2)+" (tag3). ";    
     }
 
     void Clue7()
     {
         if((KillerHome+1) % 2 == 0)
         {
-        print("Even Houses are Suspicious");
+        clues[6]="Even Houses are Suspicious";
         }
         else
         {
-        print("Odd Houses are suspicious");
+        clues[6]="Odd Houses are suspicious";
         }
     }
+/// all clues are initializes
+/// /////////////
+/// now we show them
+    public void ShowClue(int i)
+    {
+        Cluetext.text = clues[i];
+    }
 
+    public void CheckClue()
+    {
+        for (int i = 0; i < playerData.Clue; i++)
+        {
+            OffClues[i].SetActive(false);
+        }
+    }
+/// clues are shown
+/// /
+/// init tags
     void MakeTag()
     {
    string[][] combinations =
@@ -522,14 +544,15 @@ void KillAndHeal()
     do
     {
       random = UnityEngine.Random.Range(0,36); 
-
       if(houses[random].GetOwner() != null && houses[random].GetOwner().IsAlive() && houses[random].GetOwner().GetRole() != "NoOne" && houses[random].GetOwner().GetRole()!="Killer")
       {
       KillerTargetHome = random;
       print(houses[random].GetOwner().GetRole()+ " was Killed . House " + (random+1));
       policeFile.message[playerData.Nights-1] = houses[random].GetOwner().GetRole() + " was killed. House: " + (random+1).ToString();
+      policeFile.message[playerData.Nights-1] = houses[random].GetOwner().GetRole() + " was killed. House: " + (random+1).ToString();
       permission = false;
-      endgame--;        
+      endgame--;
+      playerData.PersonAlive--;
       }
 
     }while(permission);
@@ -541,11 +564,12 @@ void KillAndHeal()
    
 
 }
-  
+
 void Heal(int attackedHouse)
     {
    int random;
    bool permission = true;
+   
     do
     {
       random = UnityEngine.Random.Range(0,36); 
@@ -555,10 +579,11 @@ void Heal(int attackedHouse)
       print(houses[random].GetOwner().GetRole()+ " was saved . House " + (random+1));
       permission=false;
       if(random == attackedHouse)
-        {
+      {
+            SaveSuccess = true;
             endgame++;
+            playerData.PersonAlive++;
             policeFile.message[playerData.Nights-1] = houses[random].GetOwner().GetRole() + " was Saved by Doctor.";
-            
             print("wow");
         }
         else
@@ -637,6 +662,7 @@ public class House
     private string[] items = new string[5];
     public bool IsLocked;
     public bool hasTag;
+    public bool visited;
     private string[] Tags = new string[3];
 
     public House()
@@ -644,7 +670,8 @@ public class House
         owner = null;
         IsLocked = false;
         hasTag = false;
-        
+        visited = false;
+            
         for(int i = 0;i < items.Length; i++)
         {
             items[i] = "empty";
@@ -693,10 +720,15 @@ public class House
         }
 
     }
-
+    
     public string GetTag(int i)
     {
     return Tags[i];    
+    }
+
+    public string[] GetAlltags()
+    {
+        return Tags;
     }
 
 }

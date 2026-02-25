@@ -4,14 +4,12 @@ using UnityEngine;
 public class PickItem : MonoBehaviour
 {
     int Choose;
-    public GameObject night , day , house , GroupSelect , killmusic , night_scene;
+    public GameObject night , day , house , GroupSelect , killmusic , night_scene,Save_screen,SaveSFX;
     public PlayerData1 playerData;
     public Night Night_script;
     public Achivement achivement_script;
     public GameObject[] items = new GameObject[5];
-
     public GameObject info , coinPrize , gunPrize , bulletPrize , pizzaPrize , hotdogPrize , hamburgerPrize , medicinePrize , medkitPrize , keyPrize , torchPrize , cluePrize , nothingPrize;
-
     void OnEnable()
     {
         Choose = 3;
@@ -21,21 +19,55 @@ public class PickItem : MonoBehaviour
          items[i].SetActive(true);   
         }
 
-        StartCoroutine(Pause());
+        StartCoroutine(KillPause());
         
     }
 
-    IEnumerator Pause()
+    IEnumerator KillPause()
     {
         yield return new WaitUntil(()=> Choose <= 0);
-        night_scene.SetActive(true);
-        killmusic.GetComponent<AudioSource>().Play();
-        
+        if (!Night_script.SaveSuccess)
+        {
+            night_scene.SetActive(true);
+            killmusic.GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            Save_screen.SetActive(true);
+            SaveSFX.GetComponent<AudioSource>().Play();
+            Night_script.SaveSuccess = false;
+        }
+        achivement_script.KillerinHouse.SetActive(false);
+        achivement_script.PoliceInCity.SetActive(false);
         yield return new WaitForSeconds(7);
         print("here");
         night.SetActive(false);
         day.SetActive(true);
         night_scene.SetActive(false);
+        Save_screen.SetActive(false);
+        house.SetActive(false);
+    }
+    public IEnumerator TorchPause()
+    {
+        if (!Night_script.SaveSuccess)
+        {
+            night_scene.SetActive(true);
+            killmusic.GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            Save_screen.SetActive(true);
+            SaveSFX.GetComponent<AudioSource>().Play();
+            Night_script.SaveSuccess = false;
+        }
+        achivement_script.KillerinHouse.SetActive(false);
+        achivement_script.PoliceInCity.SetActive(false);
+        yield return new WaitForSeconds(7);
+        print("here");
+        night.SetActive(false);
+        day.SetActive(true);
+        night_scene.SetActive(false);
+        Save_screen.SetActive(false);
         house.SetActive(false);
     }
 
@@ -48,8 +80,7 @@ public void Select(int i)
  GroupSelect.SetActive(false);
  
  Earn(item);
-
- StartCoroutine(Found(item));
+ 
 
 }
 
@@ -73,14 +104,17 @@ void Earn(string item)
       if(randomFood == 1)
             {
                 playerData.Pizza +=1;
+                item="pizza";
                 print("Pizza Found!");
             }else if(randomFood == 2)
             {
                 playerData.Hotdog += 1;
+                item="hotdog";
                 print("Hotdog Found!");
             }else if(randomFood == 3)
             {
                 playerData.Hamburger += 1;
+                item="hamburger";
                 print("Hamburger Found!");
             }
     }else if(item == "medicine")
@@ -93,6 +127,7 @@ void Earn(string item)
             }else if(randomMedicine == 2)
             {
                 playerData.Medkit +=1;
+                item="medkit";
                 print("MedKit Found!");
             }
         }else if(item == "torch")
@@ -112,7 +147,7 @@ void Earn(string item)
         {
             print("Empty !");
         }
-
+        StartCoroutine(Found(item));
  
 
 }
@@ -120,7 +155,8 @@ void Earn(string item)
 
 
 IEnumerator Found(string item)
-    {
+    { 
+    print("The item you found was"+item);
      info.SetActive(true);
      if(item == "coin")
      coinPrize.SetActive(true);
@@ -128,12 +164,9 @@ IEnumerator Found(string item)
      gunPrize.SetActive(true);
      else if(item == "bullet")
      bulletPrize.SetActive(true);
-     else if(item == "pizza")
-     pizzaPrize.SetActive(true);
-     else if(item == "hotdog")
-     hotdogPrize.SetActive(true);
-     else if(item == "hamburger")
-     hamburgerPrize.SetActive(true);
+     else if (item == "pizza") pizzaPrize.SetActive(true);
+     else if(item == "hotdog") hotdogPrize.SetActive(true);
+     else if(item == "hamburger") hamburgerPrize.SetActive(true);
      else if(item == "medicine")
      medicinePrize.SetActive(true);
      else if(item == "medkit")
