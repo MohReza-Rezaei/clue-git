@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerData1 : MonoBehaviour
 {
-    public int Coin=0;
+    public int Coin=2;
     public int Pizza=0;
     public int Hotdog=0;
     public int Hamburger=0;

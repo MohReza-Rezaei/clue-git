@@ -6,21 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9af00492-3fc1-4030-b5d5-ab49c71091c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.clue-git/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.clue-git/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Image.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Image.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/shoot/shoot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/shoot/shoot.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Jersey15-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Jersey15-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/KillingFont SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/KillingFont SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Loading.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Loading.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Splash.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Splash.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Game-Scene/Day/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Game-Scene/Day/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Game-Scene/Night/Achivement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Game-Scene/Night/Achivement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Game-Scene/Night/Night.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Game-Scene/Night/Night.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Game-Scene/Night/PickItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Game-Scene/Night/PickItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Game-Scene/PlayerData1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Game-Scene/PlayerData1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ChatGPT Image Feb 16, 2026, 01_07_20 PM.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ChatGPT Image Feb 16, 2026, 01_07_20 PM.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ChatGPT Image Jan 5, 2026, 08_23_28 PM.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ChatGPT Image Jan 5, 2026, 08_23_28 PM.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,20 +33,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.14f1\Editor\Unity.exe" />
@@ -130,6 +122,8 @@
       <workItem from="1771494686089" duration="11151000" />
       <workItem from="1771755728226" duration="11726000" />
       <workItem from="1771847626910" duration="14264000" />
+      <workItem from="1772199024660" duration="882000" />
+      <workItem from="1772211023418" duration="1725000" />
     </task>
     <servers />
   </component>
